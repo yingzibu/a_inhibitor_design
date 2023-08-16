@@ -1,2 +1,2 @@
 
-### tokenizer.py was followed the original paper Generative Tensorial Reinforcement Learning (GENTRL) 
+tokenizer.py was followed the original paper Generative Tensorial Reinforcement Learning (GENTRL) 

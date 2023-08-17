@@ -39,6 +39,18 @@ def SelfiesToDataset(selfies_df, max_len, savename=None):
         onehots (len_dataset, max_len, len_alphabet)
         alphabet: a list of tokens
     """
+    
+    if isinstance(selfies_df, pd.DataFrame): 
+        dataset = selfies_df['Selfies'].tolist()
+    else: dataset = selfies_df # dataset type: list
+    
+    alphabet = sf.get_alphabet_from_selfies(dataset)
+    alphabet.add("[nop]")
+    alphabet.add('.')
+    alphabet = list(sorted(alphabet))
+    print('len alphabet: ', len(alphabet))
+    __t2i_sf = {s: i for i, s in enumerate(alphabet)}
+
     max_len_in_dataset = max(sf.len_selfies(s) for s in dataset)
     print('max len in dataset:', max_len_in_dataset)
     if max_len < max_len_in_dataset:    

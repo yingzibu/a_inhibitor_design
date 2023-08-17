@@ -23,7 +23,7 @@ def SmilesToSelfies(smiles_df):
             valid_sfs.append(smi)
         except sf.EncoderError: pass
         except sf.DecoderError: pass
-    selfies_df = pd.DataFrame(valid_sfs, columns=['Smiles'])
+    selfies_df = pd.DataFrame(valid_sfs, columns=['Selfies'])
     return selfies_df
       
   

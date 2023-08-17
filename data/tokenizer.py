@@ -101,7 +101,7 @@ def decode(tokens_tensor):
 def get_vocab_size():
     return len(__i2t)
 
-def To_matrix(t: torch.Tensor, max_len=ATOM_MAX_LEN, vocab_size=get_vocab_size()):
+def To_matrix(t: torch.Tensor, vocab_size=get_vocab_size()):
     """
     max len = 120 as default
     Convert torch.Tensor of size (len_mol, max_len) to 
@@ -112,7 +112,7 @@ def To_matrix(t: torch.Tensor, max_len=ATOM_MAX_LEN, vocab_size=get_vocab_size()
     # print(t.shape)
     assert len(t.size()) == 2 # still vector
 
-    output = torch.zeros([t.shape[0], max_len, vocab_size])
+    output = torch.zeros([t.shape[0], t.shape[1], vocab_size])
     
     for i in range(t.shape[0]):
         temp = t[i] # (max_len), one drug

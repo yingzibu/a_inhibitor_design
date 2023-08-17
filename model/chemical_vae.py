@@ -12,11 +12,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-# max_len = 120 # max_len of molecule
-# alphabet_len = len(charset)
 
 class MolecularVAE(nn.Module):
-    def __init__(self, in_dim=[250, max_len, alphabet_len], z_dim=292):
+    def __init__(self, in_dim=[batch_size, max_len, alphabet_len], z_dim=292):
         """
         param: in_dim = [batch_size, max_len, len(alphabet)]
         param: z_dim: z dimension

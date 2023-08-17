@@ -4,7 +4,7 @@ cd /content/drive/MyDrive/JAK_ML/gentrl/
 """
 import torch
 import re
-
+from tqdm import tqdm
 
 _atoms = ['He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar',
           'Ca', 'Ti', 'Cr', 'Fe', 'Ni', 'Cu', 'Ga', 'Ge', 'As', 'Se',
@@ -164,5 +164,37 @@ def To_vector(mat: torch.Tensor):
     device_mat = mat.device.type
     output = output.to(device_mat)
     return output
+
+def remove_ions(smis:list,
+    ion_list = ['[K+]', '[Li+]', '[Na+]', '[I-]', '[Cl-]', '[Br-]', 'Cl'], 
+                print_info = False):
+    ions_exist = False
+    new_ion_list = []
+    for ion in ion_list:
+        ion1 = '.'+ ion
+        ion2 = ion + '.'
+        new_ion_list.append(ion1)
+        new_ion_list.append(ion2)
+    
+    new_smis = []
+
+    for smi in tqdm(smis): 
+        ions_exist = False
+        new_smi = ''
+        for ion in new_ion_list:
+
+            if ion in smi:
+                ions_exist = True
+                
+                # ions_exist = True
+                s = smi.replace(ion, '')
+                if print_info == True: print('delete ion: ', ion)
+                try:
+                    mol = m(s)
+                    new_smi = s
+                except: new_smi = smi
+        if ions_exist == False: new_smi = smi
+        new_smis.append(new_smi)
+    return new_smis
 
 

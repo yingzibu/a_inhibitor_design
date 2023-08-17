@@ -26,6 +26,7 @@ def SmilesToSelfies(smiles_df):
     selfies_df = pd.DataFrame(valid_sfs, columns=['Selfies'])
     return selfies_df
 
+
 def SelfiesToDataset(selfies_df, max_len, savename=None):
     """
     Convert selfies into dataset. Dictionary
@@ -39,10 +40,11 @@ def SelfiesToDataset(selfies_df, max_len, savename=None):
         onehots (len_dataset, max_len, len_alphabet)
         alphabet: a list of tokens
     """
-    
+    dataset = []
     if isinstance(selfies_df, pd.DataFrame): 
         dataset = selfies_df['Selfies'].tolist()
     else: dataset = selfies_df # dataset type: list
+
     
     alphabet = sf.get_alphabet_from_selfies(dataset)
     alphabet.add("[nop]")
@@ -71,9 +73,11 @@ def SelfiesToDataset(selfies_df, max_len, savename=None):
         dict_ = {'labels': labels, 
                  'one_hots': one_hots,
                  'alphabet': alphabet}
-        if savename != None and name.split('.')[-1] == 'pt': 
+        if savename != None and savename.split('.')[-1] == 'pt': 
             torch.save(dict_, savename)
             print('dataset saved at:', savename)
         return dict_
+         
+
         
       

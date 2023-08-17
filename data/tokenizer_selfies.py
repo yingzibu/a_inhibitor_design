@@ -8,6 +8,7 @@ Reference: https://github.com/aspuru-guzik-group/selfies
 from tqdm import tqdm
 import selfies as sf
 import pandas as pd
+import torch
 
 def SmilesToSelfies(smiles_df): 
     """

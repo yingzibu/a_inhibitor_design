@@ -21,25 +21,7 @@ ATOM_MAX_LEN = 120
 def get_tokenizer_re(atoms):
     return re.compile('('+'|'.join(atoms)+r'|\%\d\d|.)')
 
-
 _atoms_re = get_tokenizer_re(_atoms)
-
-
-# __i2t = {
-#     0: 'unused', 1: '>', 2: '<', 3: '2', 4: 'F', 5: 'Cl', 6: 'N',
-#     7: '[', 8: '6', 9: 'O', 10: 'c', 11: ']', 12: '#',
-#     13: '=', 14: '3', 15: ')', 16: '4', 17: '-', 18: 'n',
-#     19: 'o', 20: '5', 21: 'H', 22: '(', 23: 'C',
-#     24: '1', 25: 'S', 26: 's', 27: 'Br' 
-# }
-# # 28: '@', 29: '/', 30: '.'
-
-# __t2i = {
-#     '>': 1, '<': 2, '2': 3, 'F': 4, 'Cl': 5, 'N': 6, '[': 7, '6': 8,
-#     'O': 9, 'c': 10, ']': 11, '#': 12, '=': 13, '3': 14, ')': 15,
-#     '4': 16, '-': 17, 'n': 18, 'o': 19, '5': 20, 'H': 21, '(': 22,
-#     'C': 23, '1': 24, 'S': 25, 's': 26, 'Br': 27 
-# }
 
 __i2t = {
     0: 'unused', 1: '>', 2: '<', 3: '2', 4: 'F', 5: 'Cl', 6: 'N',
@@ -93,7 +75,6 @@ def encode(sm_list, pad_size=ATOM_MAX_LEN):
         tokens += (pad_size - len(tokens)) * [2]
         res.append(tokens)
     
-
     return torch.tensor(res).long(), lens
 
 
@@ -132,7 +113,6 @@ def To_matrix(t: torch.Tensor, max_len=ATOM_MAX_LEN, vocab_size=get_vocab_size()
     assert len(t.size()) == 2 # still vector
 
     output = torch.zeros([t.shape[0], max_len, vocab_size])
-
     
     for i in range(t.shape[0]):
         temp = t[i] # (max_len), one drug

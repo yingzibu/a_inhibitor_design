@@ -20,7 +20,7 @@ def SmilesToSelfies(smiles_df):
         try:
             drug_sf = sf.encoder(smi)
             drug_smi = sf.decoder(drug_sf)
-            valid_sfs.append(smi)
+            valid_sfs.append(drug_sf)
         except sf.EncoderError: pass
         except sf.DecoderError: pass
     selfies_df = pd.DataFrame(valid_sfs, columns=['Selfies'])

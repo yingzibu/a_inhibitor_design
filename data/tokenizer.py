@@ -16,6 +16,7 @@ _atoms = ['He', 'Li', 'Be', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'Cl', 'Ar',
           'Bk', 'Cf', 'Es', 'Fm', 'Md', 'Lr', 'Rf', 'Db', 'Sg', 'Mt',
           'Ds', 'Rg', 'Fl', 'Mc', 'Lv', 'Ts', 'Og']
 
+ATOM_MAX_LEN = 120
 
 def get_tokenizer_re(atoms):
     return re.compile('('+'|'.join(atoms)+r'|\%\d\d|.)')
@@ -78,7 +79,7 @@ def smiles_tokenizer(line, atoms=['Cl', 'Br', 'Si']):
     return reg.split(line)[1::2]
 
 
-def encode(sm_list, pad_size=120):
+def encode(sm_list, pad_size=ATOM_MAX_LEN):
     """
     Encoder list of smiles to tensor of tokens
     """
@@ -118,3 +119,50 @@ def decode(tokens_tensor):
 
 def get_vocab_size():
     return len(__i2t)
+
+def To_matrix(t: torch.Tensor, max_len=ATOM_MAX_LEN, vocab_size=get_vocab_size()):
+    """
+    max len = 120 as default
+    Convert torch.Tensor of size (len_mol, max_len) to 
+    torch.Tensor of (len_mol, vocab_size, max_len)
+    :param t: tensor of size (len_mol, max_len) 
+    :return (len_mol, max_len, vocab_size)
+    """
+    # print(t.shape)
+    assert len(t.size()) == 2 # still vector
+
+    output = torch.zeros([t.shape[0], max_len, vocab_size])
+
+    
+    for i in range(t.shape[0]):
+        temp = t[i] # (max_len), one drug
+        for j, value in enumerate(temp): 
+            output[i][j][value] = 1
+
+    device_t = t.device.type
+
+    output = output.to(device_t)
+    
+    return output
+
+def To_vector(mat: torch.Tensor):
+    """
+    :param mat: (len_mol, max_len, vocab_size)
+    : Return back to array
+    """
+    len_mol, max_len, vocab_size = mat.shape
+    output = torch.zeros([len_mol, max_len])
+
+    for i in range(mat.shape[0]):
+        temp = mat[i] 
+        # print(temp.shape) [max_len, vocab_size]
+        pos = torch.argmax(temp, dim=1) # size [120]
+        # print(pos.shape) 
+
+        output[i] = pos
+    
+    device_mat = mat.device.type
+    output = output.to(device_mat)
+    return output
+
+

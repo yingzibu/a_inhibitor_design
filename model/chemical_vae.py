@@ -1,3 +1,12 @@
+"""
+Date: 8-17-2023
+
+Adapted from paper: "Automatic Chemical Design using a data-driven
+continuous representation of molecules"
+
+pytorch adaptation reference:   
+https://github.com/Ishan-Kumar2/Molecular_VAE_Pytorch/blob/master/model.py
+"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

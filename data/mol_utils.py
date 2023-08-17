@@ -1,3 +1,10 @@
+"""
+Date: 08-17-2023
+
+Reference: 
+https://github.com/Yimeng-Wang/JAK-MTATFP/blob/main/preprocess.py
+"""
+
 # ! pip install rdkit --quiet
 # ! pip install molvs --quiet
 

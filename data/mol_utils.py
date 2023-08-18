@@ -25,7 +25,21 @@ def preprocess(smi):
     new4 = neutralize2(new3)
     new_smiles = Chem.MolToSmiles(new4, kekuleSmiles=False)
     return new_smiles
+    
+def onehot(k):
+    """
+    Converts a number to its torch.Size([k])
+    one-hot representation vector
+    :param k: (int) length of vector
+    : return onehot function
+    """
+    def encode(label):
+        y = torch.zeros(k)
+        if label < k: y[label] = 1
+        return y
+    return encode # torch.Size([k])
 
-smi = 'C/C=C/C(O)=Nc1cccc(CNc2c(C(=N)O)cnn3cccc23)c1'
-new_smiles = preprocess(smi)
-print(new_smiles)
+
+# smi = 'C/C=C/C(O)=Nc1cccc(CNc2c(C(=N)O)cnn3cccc23)c1'
+# new_smiles = preprocess(smi)
+# print(new_smiles)

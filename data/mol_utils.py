@@ -12,6 +12,7 @@ from rdkit import Chem
 from molvs.normalize import Normalizer, Normalization
 from rdkit.Chem.SaltRemover import SaltRemover
 from molvs.charge import Reionizer, Uncharger
+import torch
 
 def preprocess(smi):
     mol = Chem.MolFromSmiles(smi)

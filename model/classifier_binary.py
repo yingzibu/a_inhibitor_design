@@ -1,4 +1,6 @@
 import torch.nn as nn
+import pandas as pd
+import torch
 
 class Classifier_binary(nn.Module):
     """
@@ -23,3 +25,20 @@ class Classifier_binary(nn.Module):
         x = self.final(x)
         x = torch.sigmoid(x)
         return x
+
+class fp_dataset(Dataset):
+    def __init__(self, df):
+        super(fp_dataset, self).__init__()
+        self.len = len(df)
+        self.df = df
+    def __getitem__(self, idx):
+        header = ['bit' + str(i) for i in range(167)]
+        fp = self.df[header]
+        fp = torch.tensor([float(b) for b in fp.iloc[idx]])
+        label = self.df['Activity'][idx]
+        # print(label)
+        # label = onehot(2)(label)
+        label = torch.tensor([label])
+        return fp, label
+    def __len__(self):
+        return self.len

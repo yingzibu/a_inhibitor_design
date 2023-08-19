@@ -1,3 +1,13 @@
+"""
+Date: 08-18-2023
+
+Aim: To compare with MTATFP: https://github.com/Yimeng-Wang/JAK-MTATFP
+     if simple NN regressor works, will use NN for property prediction 
+     else will use MTATFP
+     
+Usage: check examples/fp_multi_label_regression.ipynb
+"""
+
 import torch.nn as nn
 import pandas as pd
 import torch

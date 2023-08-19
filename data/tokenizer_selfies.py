@@ -50,15 +50,7 @@ def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
     if isinstance(selfies_df, pd.DataFrame): 
         dataset = selfies_df['Selfies'].tolist()
     else: dataset = selfies_df # dataset type: list
-
-    
-    alphabet = sf.get_alphabet_from_selfies(dataset)
-    alphabet.add("[nop]")
-    alphabet.add('.')
-    alphabet = list(sorted(alphabet))
-    print('len alphabet: ', len(alphabet))
-    __t2i_sf = {s: i for i, s in enumerate(alphabet)}
-
+        
     max_len_in_dataset = max(sf.len_selfies(s) for s in dataset)
     print('max len in dataset:', max_len_in_dataset)
     if max_len < max_len_in_dataset:    
@@ -66,18 +58,25 @@ def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
               f'{max_len} < {max_len_in_dataset}')
         if delete_long:
             print('delete long selfies')
-
+            new_dataset = [s if sf.len_selfies(s)<= max_len for s in dataset]
+            print('delete #', len(dataset) - len(new_dataset))
+            dataset = new_dataset
+            
+    alphabet = sf.get_alphabet_from_selfies(dataset)
+    alphabet.add("[nop]")
+    alphabet.add('.')
+    alphabet = list(sorted(alphabet))
+    print('len alphabet: ', len(alphabet))
+    __t2i_sf = {s: i for i, s in enumerate(alphabet)}
+    
     labels = []
     one_hots = []
     for selfi in tqdm(dataset, total=len(dataset)): 
-        if sf.len_selfies(selfi) > max_len and delete_long: 
-            pass
-        else:
-            label, one_hot = sf.selfies_to_encoding(
-                selfies = selfi, vocab_stoi = __t2i_sf, 
-                pad_to_len = max_len, enc_type='both')
-            labels.append(label)
-            one_hots.append(one_hot)
+        label, one_hot = sf.selfies_to_encoding(
+            selfies = selfi, vocab_stoi = __t2i_sf, 
+            pad_to_len = max_len, enc_type='both')
+        labels.append(label)
+        one_hots.append(one_hot)
 
     labels = torch.Tensor(labels).long() 
     one_hots = torch.Tensor(one_hots).long()

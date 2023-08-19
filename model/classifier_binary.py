@@ -1,3 +1,14 @@
+"""
+Date: 08-17-2023
+
+Aim: To see whether simple NN could classify well 
+     If yes, will use simple NN for prediction while 
+     training using latent space vector as input, 
+     Else, will try using CoGT
+     
+Usage: check examples/classifier_binary_fp.ipynb
+"""
+
 import torch.nn as nn
 import pandas as pd
 import torch

@@ -12,7 +12,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
-
 class MolecularVAE(nn.Module):
     def __init__(self, in_dim, z_dim=292):
         """
@@ -27,10 +26,10 @@ class MolecularVAE(nn.Module):
         self.alphabet_len = alphabet_len
         self.kld = 0
 
-        self.conv_1 = nn.Conv1d(max_len, 9, kernel_size = 9) #[bs, 9, 25]
-        self.conv_2 = nn.Conv1d(9, 9, kernel_size=9) # [bs, 9, 17]
-        self.conv_3 = nn.Conv1d(9, 10, kernel_size=11) # [bs, 10, 7]
-        self.linear_0 = nn.Linear(70, 435)
+        self.conv_1 = nn.Conv1d(max_len, 9, kernel_size = 9) #[bs, 9, nchar-8]
+        self.conv_2 = nn.Conv1d(9, 9, kernel_size=9) # [bs, 9, nchar-16] -8
+        self.conv_3 = nn.Conv1d(9, 10, kernel_size=11) # [bs, 10, nchar-26] -10
+        self.linear_0 = nn.Linear(10*(alphabet_len - 26), 435)
         self.mu = nn.Linear(435, z_dim)
         self.logvar = nn.Linear(435, z_dim)
 

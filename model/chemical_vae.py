@@ -14,7 +14,7 @@ from torch.autograd import Variable
 
 
 class MolecularVAE(nn.Module):
-    def __init__(self, in_dim=[batch_size, max_len, alphabet_len], z_dim=292):
+    def __init__(self, in_dim, z_dim=292):
         """
         param: in_dim = [batch_size, max_len, len(alphabet)]
         param: z_dim: z dimension

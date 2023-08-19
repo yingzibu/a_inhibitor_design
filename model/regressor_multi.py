@@ -40,7 +40,6 @@ class Regressor(nn.Module):
     def forward(self, x):
         for layer in self.hidden:
             x = F.relu(layer(x))
-            # print(x.shape) [batch_size, h_dim[-1]]
         x = self.final(x)
         return x
 

@@ -28,7 +28,7 @@ class Regressor(nn.Module):
         """
         super(Regressor, self).__init__()
         [in_dim, h_dims, out_dim] = dims
-
+        self.dims = dims
         neurons = [in_dim, *h_dims] 
         linear_layers = [nn.Linear(
             neurons[i-1], neurons[i]

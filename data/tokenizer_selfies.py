@@ -9,6 +9,7 @@ from tqdm import tqdm
 import selfies as sf
 import pandas as pd
 import torch
+import os
 
 def SmilesToSelfies(smiles_df): 
     """
@@ -28,7 +29,7 @@ def SmilesToSelfies(smiles_df):
     return selfies_df
 
 
-def SelfiesToDataset(selfies_df, max_len, savename=None):
+def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
     """
     Convert selfies into dataset. Dictionary
     dict_ = {'labels': labels, 
@@ -36,6 +37,10 @@ def SelfiesToDataset(selfies_df, max_len, savename=None):
          'alphabet': alphabet}
     :param selfies_df: dataframe of selfies
     :param savename: save file name 
+    :param delete_long: 
+        True: delete long selfies if exceend max_len
+        False: will truncate selfies to max_len
+
     Return a dictionary containing 
         labels (len_dataset, max_len)
         onehots (len_dataset, max_len, len_alphabet)
@@ -58,27 +63,30 @@ def SelfiesToDataset(selfies_df, max_len, savename=None):
     print('max len in dataset:', max_len_in_dataset)
     if max_len < max_len_in_dataset:    
         print(f'current defined max len: ',
-              f'{max_len} < {max_len_in_dataset}, Abort')
-        return
-    else:
-        labels = []
-        one_hots = []
-        for selfi in tqdm(dataset, total=len(dataset)): 
+              f'{max_len} < {max_len_in_dataset}')
+        if delete_long:
+            print('delete long selfies')
+
+    labels = []
+    one_hots = []
+    for selfi in tqdm(dataset, total=len(dataset)): 
+        if sf.len_selfies(selfi) > max_len and delete_long: 
+            pass
+        else:
             label, one_hot = sf.selfies_to_encoding(
                 selfies = selfi, vocab_stoi = __t2i_sf, 
                 pad_to_len = max_len, enc_type='both')
             labels.append(label)
             one_hots.append(one_hot)
-        labels = torch.Tensor(labels).long() 
-        one_hots = torch.Tensor(one_hots).long()
-        dict_ = {'labels': labels, 
-                 'one_hots': one_hots,
-                 'alphabet': alphabet}
-        if savename != None and savename.split('.')[-1] == 'pt': 
-            torch.save(dict_, savename)
-            print('dataset saved at:', savename)
-        return dict_
-         
 
-        
-      
+    labels = torch.Tensor(labels).long() 
+    one_hots = torch.Tensor(one_hots).long()
+    dict_ = {'labels': labels, 
+            'one_hots': one_hots,
+            'alphabet': alphabet}
+    if savename != None and savename.split('.')[-1] == 'pt': 
+        torch.save(dict_, savename)
+        print('dataset saved at:', os.getcwd() + '/' + savename)
+    return dict_
+
+

@@ -57,10 +57,9 @@ class fp_reg_dataset(Dataset):
         enzymes = ['JAK1', 'JAK2', 'JAK3', 'TYK2']
         header = ['bit' + str(i) for i in range(167)]
         fp = self.df[header]
-        fp = torch.tensor([float(b) for b in fp.iloc[idx]], dtype=torch.float32)
+        fp = torch.tensor([float(b) for b in fp.iloc[idx]], 
+                          dtype=torch.float32)
         label = [self.df['pIC50_'+enzyme][idx] for enzyme in enzymes]
-        # print(label)
-        # label = onehot(2)(label)
         label = torch.tensor(label, dtype=torch.float32) 
         return fp, label
     def __len__(self):

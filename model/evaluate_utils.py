@@ -21,3 +21,13 @@ def plot_loss(train_dict, test_dict):
     plt.title('loss during training')
     plt.legend()
     plt.show()
+    
+def plot_kld(train_dict, test_dict):
+    fig = plt.figure()
+    plt.plot(list(train_dict.keys()), list(train_dict.values()), label='train')
+    plt.plot(list(test_dict.keys()), list(test_dict.values()), label='test')
+    plt.xlabel('epoch')
+    plt.ylabel('KLD / total loss')
+    plt.title('KLD percentage in total loss')
+    plt.legend()
+    plt.show()

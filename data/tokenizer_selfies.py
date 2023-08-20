@@ -10,6 +10,7 @@ import selfies as sf
 import pandas as pd
 import torch
 import os
+import pickle
 
 def SmilesToSelfies(smiles_df): 
     """
@@ -58,7 +59,7 @@ def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
               f'{max_len} < {max_len_in_dataset}')
         if delete_long:
             print('delete long selfies')
-            new_dataset = [s if sf.len_selfies(s)<= max_len for s in dataset]
+            new_dataset = [s for s in dataset if sf.len_selfies(s)<= max_len]
             print('delete #', len(dataset) - len(new_dataset))
             dataset = new_dataset
             
@@ -83,9 +84,12 @@ def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
     dict_ = {'labels': labels, 
             'one_hots': one_hots,
             'alphabet': alphabet}
-    if savename != None and savename.split('.')[-1] == 'pt': 
-        torch.save(dict_, savename)
+    if savename != None and savename.split('.')[-1] == 'pkl': 
+        # torch.save(dict_, savename)
+        with open(savename, 'wb) as f:
+            pickle.dump(dict_, f)
         print('dataset saved at:', os.getcwd() + '/' + savename)
+    if save
     return dict_
 
 

@@ -6,7 +6,7 @@ Code of RNNEncoder duplicated from GENTRL
 
 import torch
 from torch import nn
-from .tokenizer import encode, get_vocab_size
+from data.tokenizer import encode, get_vocab_size
 
 
 class RNNEncoder(nn.Module):

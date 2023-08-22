@@ -86,10 +86,10 @@ def SelfiesToDataset(selfies_df, max_len, savename=None, delete_long=True):
             'alphabet': alphabet}
     if savename != None and savename.split('.')[-1] == 'pkl': 
         # torch.save(dict_, savename)
-        with open(savename, 'wb) as f:
+        with open(savename, 'wb') as f:
             pickle.dump(dict_, f)
         print('dataset saved at:', os.getcwd() + '/' + savename)
-    if save
+    # if savename != None and savename.split(
     return dict_
 
 

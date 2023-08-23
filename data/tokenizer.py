@@ -77,7 +77,12 @@ def encode(sm_list, pad_size=ATOM_MAX_LEN):
     
     return torch.tensor(res).long(), lens
 
-
+def encode_single(smi, pad_size=ATOM_MAX_LEN):
+    tokens = ([1] + [__t2i[tok]
+                for tok in smiles_tokenizer(smi)])[:pad_size - 1]
+    tokens += (pad_size-len(tokens))*[2]
+    return tokens
+          
 def decode(tokens_tensor):
     """
     Decodes from tensor of tokens to list of smiles

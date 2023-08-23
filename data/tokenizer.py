@@ -80,8 +80,9 @@ def encode(sm_list, pad_size=ATOM_MAX_LEN):
 def encode_single(smi, pad_size=ATOM_MAX_LEN):
     tokens = ([1] + [__t2i[tok]
                 for tok in smiles_tokenizer(smi)])[:pad_size - 1]
+    len = len(tokens)
     tokens += (pad_size-len(tokens))*[2]
-    return tokens
+    return tokens, len
           
 def decode(tokens_tensor):
     """

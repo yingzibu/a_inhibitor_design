@@ -183,4 +183,32 @@ def remove_ions(smis:list,
         new_smis.append(new_smi)
     return new_smis
 
+# new_list = remove_ions(smiles)
+# new_list = remove_ions(new_list)
+# new_list = remove_ions(new_list)
+# new_list = remove_ions(new_list)
+# new_list = remove_ions(new_list)
 
+# ions_ex = []
+# new_list_new = []
+# super_strange = []
+# super_strange_ind = []
+# for j, i in enumerate(new_list):
+#     if '.' in i:
+#         temp_list = i.split('.')
+#         temp_lens = [len(h) for h in temp_list]
+        
+#         print(j) 
+#         super_strange_ind.append(j)
+#         super_strange.append(i)
+
+#         new_list_new.append(temp_list[np.argmax(temp_lens)])
+#     else: new_list_new.append(i)
+# print(len(ions_ex))
+
+# from IPython.display import display
+# for j, i in enumerate(super_strange[:20]): 
+#     print(j)
+#     display(m(big_df.iloc[super_strange_ind[j]]['smiles']))
+#     # display(m(i))
+#     display(m(new_list_new[super_strange_ind[j]]))

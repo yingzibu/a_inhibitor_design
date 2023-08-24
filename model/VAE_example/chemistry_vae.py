@@ -313,7 +313,7 @@ def train_model(vae_encoder, vae_decoder,
             optimizer_encoder.step()
             optimizer_decoder.step()
 
-            if batch_iteration % 30 == 0:
+            if batch_iteration % int(num_batches_train/3) == 0:
                 end = time.time()
 
                 # assess reconstruction quality

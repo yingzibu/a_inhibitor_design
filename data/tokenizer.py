@@ -150,7 +150,11 @@ def To_vector(mat: torch.Tensor):
     device_mat = mat.device.type
     output = output.to(device_mat)
     return output
-
+          
+import rdkit
+from rdkit import Chem
+from Ipython.display import display
+m = Chem.MolFromSmiles
 def remove_ions(smis:list,
     ion_list = ['[K+]', '[Li+]', '[Na+]', '[I-]', '[Cl-]', '[Br-]', 'Cl'], 
                 print_info = False):

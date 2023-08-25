@@ -156,7 +156,7 @@ def To_vector(mat: torch.Tensor):
           
 import rdkit
 from rdkit import Chem
-from Ipython.display import display
+from IPython.display import display
 m = Chem.MolFromSmiles
 def remove_ions(smis:list,
     ion_list = ['[K+]', '[Li+]', '[Na+]', '[I-]', '[Cl-]', '[Br-]', 'Cl'], 

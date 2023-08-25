@@ -189,7 +189,42 @@ def remove_ions(smis:list,
         if ions_exist == False: new_smi = smi
         new_smis.append(new_smi)
     return new_smis
+def delete_ions_strict(input_smiles:list): 
+    print('delete ions 5 round: ')
+    new_list = remove_ions(input_smiles)
+    new_list = remove_ions(new_list)
+    new_list = remove_ions(new_list)
+    new_list = remove_ions(new_list)
+    new_list = remove_ions(new_list)
 
+    smile_ions = []
+    smile_ions_inds = []
+    new_list_new = []
+
+    import random
+    for j, i in enumerate(new_list): 
+        if '.' in i:
+            temp_list = i.split('.')
+            temp_lens = [len(h) for h in temp_list]
+            smile_ions.append(i)
+            smile_ions_inds.append(j)
+            new_list_new.append(temp_list[np.argmax(temp_lens)])
+        else: new_list_new.append(i)
+    print('still ions exist: ', len(smile_ions), 'will random display 20')
+    show_num = min(len(smile_ions), 20)
+    selected_smiles = random.choices(smile_ions, k=show_num)
+
+    for j, i in enumerate(selected_smiles):
+        print(f'compound {j}')
+        temp_ind = smile_ions_inds[j]
+        print(f'previous ind {temp_ind}')
+        display(m(input_smiles[temp_ind]))
+        print('simple deletion')
+        display(m(new_list[temp_ind]))
+        print('select the longest')
+        display(m(new_list_new[temp_ind]))
+
+    return new_list_new 
 # new_list = remove_ions(smiles)
 # new_list = remove_ions(new_list)
 # new_list = remove_ions(new_list)

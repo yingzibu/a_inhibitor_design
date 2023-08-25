@@ -1,4 +1,7 @@
 """
+Date: 08-24-2023
+Smiles tokenizer adpated from gentrl github 
+https://github.com/insilicomedicine/GENTRL/blob/master/gentrl/tokenizer.py
 
 cd /content/drive/MyDrive/JAK_ML/gentrl/
 """

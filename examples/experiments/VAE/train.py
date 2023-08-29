@@ -7,10 +7,9 @@ import pandas as pd
 
 import torch
 
-# from transvae.trans_models import TransVAE
-# from transvae.rnn_models import RNN, RNNAttn
-# from scripts.parsers import model_init, train_parser
-from transvae import TransVAE, RNN, RNNAttn, model_init, train_parser
+from transvae.trans_models import TransVAE
+from transvae.rnn_models import RNN, RNNAttn
+from scripts.parsers import model_init, train_parser
 
 def train(args):
     ### Update beta init parameter

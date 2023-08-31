@@ -6,7 +6,7 @@ without classifier
 
 
 
-latent space QED (PCA)       | latent space SA  (PCA)
+latent space QED, no classifier (PCA)       | latent space SA, no classifier  (PCA) 
 :-------------------------:|:-------------------------:
 ![](qed_no_classifier.png)  |  ![](sa_no_classifier.png)
 

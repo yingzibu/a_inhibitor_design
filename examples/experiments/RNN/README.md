@@ -4,3 +4,4 @@ without classifier
 latent space QED (PCA)       | latent space SA  (PCA)
 :-------------------------:|:-------------------------:
 ![](qed_no_classifier.png)  |  ![](sa_no_classifier.png)
+![](qed_no_classifier.gif)  |  ![](sa_no_classifier.gif)

@@ -6,9 +6,10 @@ without classifier
 
 
 
-latent space QED, no classifier (PCA)       | latent space SA, no classifier  (PCA) 
-:-------------------------:|:-------------------------:
-![](qed_no_classifier.png)  |  ![](sa_no_classifier.png)
+ | Dim reduction | latent space QED, no classifier    | latent space SA, no classifier  
+ :-----:|:-------------------------:|:-------------------------:
+ | PCA |  ![](qed_no_classifier.png)  |  ![](sa_no_classifier.png) |
+ | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
 
 
 

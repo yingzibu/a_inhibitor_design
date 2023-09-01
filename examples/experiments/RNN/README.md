@@ -3,7 +3,7 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
  | latent space QED    | latent space SA
 :-------------------------:|:-------------------------:
 
-![QED distribution in latent space during training, without classifier](qed_no_classifier.gif)  | ![QED distribution in latent space during training, without classifier](qed_no_classifier.gif) 
+| ![QED distribution in latent space during training, without classifier](qed_no_classifier.gif)  | ![QED distribution in latent space during training, without classifier](qed_no_classifier.gif) |
 
 
 

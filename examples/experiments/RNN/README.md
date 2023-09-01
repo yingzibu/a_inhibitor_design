@@ -4,7 +4,7 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
  | PCA | latent space QED    | latent space SA
 :-----:|:-------------------------:|:-------------------------:
 |with classifier| ![](figures/QED_recon.gif)  | ![](figures/SA_recon.gif) |
-|prediction||
+| prediction | ![](figures/qed_pred.png) | ![](figures/sa_pred.png) |
 
 
 

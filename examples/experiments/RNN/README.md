@@ -16,7 +16,6 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
  | Dim reduction | latent space QED, with classifier    | latent space SA, with classifier  
  :-----:|:-------------------------:|:-------------------------:
   | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
-
  | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
 
 

@@ -3,7 +3,7 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
  
  | PCA | latent space QED    | latent space SA
 :-----:|:-------------------------:|:-------------------------:
-|with classifier| ![](qed_no_classifier.gif)  | ![](qed_no_classifier.gif) |
+|with classifier| ![](figures/QED_with_classifier.gif)  | ![](figures/SA.gif) |
 
 
 

@@ -25,5 +25,5 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
 
 | reconstruction | no classifier    | with classifier  
  :-----:|:-------------------------:|:-------------------------:
-|examples | ![](figures/recon_no_classifier.png) | ![](figures/recon.png) |
-| recon quality | valid 91.967%, unique 91.967% | valid 90.600%, unique 90.600% | 
+| examples | ![](figures/recon_no_classifier.png) | ![](figures/recon.png) |
+| sample quality | valid 91.967%, unique 91.967% | valid 91.667%, unique 91.667% | 

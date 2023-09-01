@@ -7,15 +7,15 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
 
  | PCA | latent space QED    | latent space SA
  :-----:|:-------------------------:|:-------------------------:
- | no classifier |  ![](qed_no_classifier.png)  |  ![](sa_no_classifier.png) |
- | with classifier |  ![](qed_classifier.png)  |  ![](sa_classifier.png) |
+ | no classifier |  ![](figures/qed_no_classifier.png)  |  ![](figures/sa_no_classifier.png) |
+ | with classifier |  ![](figures/qed_classifier.png)  |  ![](figures/sa_classifier.png) |
 
 
 
 
  | Dim reduction | latent space QED, with classifier    | latent space SA, with classifier  
  :-----:|:-------------------------:|:-------------------------:
-  | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
+  | t-SNE |  ![](figures/qed_no_classifier_tsne.png)  |  ![](figures/sa_no_classifier_tsne.png) |
  | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
 
 

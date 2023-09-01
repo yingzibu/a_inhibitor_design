@@ -13,3 +13,11 @@ without classifier
 
 
 
+
+ | Dim reduction | latent space QED, with classifier    | latent space SA, with classifier  
+ :-----:|:-------------------------:|:-------------------------:
+ | PCA |  ![](qed_classifier.png)  |  ![](sa_classifier.png) |
+ | t-SNE |  ![](qed_no_classifier_tsne.png)  |  ![](sa_no_classifier_tsne.png) |
+
+
+

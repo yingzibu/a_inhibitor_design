@@ -26,7 +26,7 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
 | reconstruction | no classifier    | with classifier  
  :-----:|:-------------------------:|:-------------------------:
 | examples | ![](figures/recon_no_classifier.png) | ![](figures/recon_classifier.png) |
-| sample quality | valid 91.967%, unique 91.967% | valid 92.500%, unique 92.500% | 
+| sample quality | valid 91.967%, unique 91.967% | valid 93.700%, unique 93.700% | 
 
 
 #### deficit: using char to tokenize SMILES. Hard to recon exactly and smiles may not be valid

@@ -9,18 +9,13 @@ Reference: Gómez-Bombarelli, Rafael, et al. "Automatic chemical design using a 
 
 
 
- | PCA | latent space QED    | latent space SA
- :-----:|:-------------------------:|:-------------------------:
- | no classifier |  ![](figures/qed_no_classifier.png)  |  ![](figures/sa_no_classifier.png) |
- | with classifier |  ![](figures/qed_classifier.png)  |  ![](figures/sa_classifier.png) |
+ | dim reduction | latent space QED PCA   | latent space SA PCA | latent space QED t-SNE   | latent space SA   t-SNE
+ :-----:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+ | no classifier |  ![](figures/qed_no_classifier.png)  |  ![](figures/sa_no_classifier.png) | ![](figures/qed_no_classifier_tsne.png)  |  ![](figures/sa_no_classifier_tsne.png) |
+ | with classifier |  ![](figures/qed_classifier.png)  |  ![](figures/sa_classifier.png) | ![](figures/qed_tsne.png)  |  ![](figures/sa_tsne.png) |
 
 
 
-
- | t-SNE | latent space QED, with classifier    | latent space SA, with classifier  
- :-----:|:-------------------------:|:-------------------------:
- | no classifier |  ![](figures/qed_no_classifier_tsne.png)  |  ![](figures/sa_no_classifier_tsne.png) |
- | with classifier |  ![](figures/qed_tsne.png)  |  ![](figures/sa_tsne.png) |
 
 
 | reconstruction | no classifier    | with classifier  

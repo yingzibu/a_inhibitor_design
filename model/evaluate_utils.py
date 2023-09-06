@@ -10,10 +10,10 @@ def get_min(d:dict):
             min_key = key
     return min_key, d[min_key]
 
-def plot_loss(train_dict, test_dict):
+def plot_loss(train_dict, test_dict, name='test'):
     fig = plt.figure()
     plt.plot(list(train_dict.keys()), list(train_dict.values()), label='train')
-    plt.plot(list(test_dict.keys()), list(test_dict.values()), label='test')
+    plt.plot(list(test_dict.keys()), list(test_dict.values()), label=name)
     argmin, min = get_min(test_dict)
     plt.plot(argmin, min, '*', label=f'min epoch {argmin}') 
     plt.xlabel('epoch')
